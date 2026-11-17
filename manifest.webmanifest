@@ -1,0 +1,18 @@
+{
+  "name": "Orbit — Privacy-first job search",
+  "short_name": "Orbit",
+  "description": "Discover, prepare, and track your next opportunity.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f7f5",
+  "theme_color": "#242126",
+  "icons": [
+    {
+      "src": "icons/orbit.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

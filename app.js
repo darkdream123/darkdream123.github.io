@@ -1,4 +1,5 @@
 const toast = document.querySelector("#toast");
+let deferredInstallPrompt;
 const showToast = (message) => {
   toast.textContent = message;
   toast.classList.add("show");
@@ -38,3 +39,38 @@ document.querySelector(".mobile-menu").addEventListener("click", () => {
 document.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", () => document.querySelector(".sidebar").classList.remove("open"));
 });
+
+const installButtons = [
+  document.querySelector("#install-button"),
+  document.querySelector("#footer-install")
+];
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installButtons.forEach((button) => {
+    if (button) button.hidden = false;
+  });
+});
+
+installButtons.forEach((button) => {
+  button?.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) {
+      showToast("Use your browser menu to add Orbit to your home screen.");
+      return;
+    }
+    deferredInstallPrompt.prompt();
+    const result = await deferredInstallPrompt.userChoice;
+    if (result.outcome === "accepted") showToast("Orbit is ready on your device.");
+    deferredInstallPrompt = null;
+    installButtons.forEach((item) => {
+      if (item) item.hidden = true;
+    });
+  });
+});
+
+window.addEventListener("appinstalled", () => showToast("Orbit installed successfully."));
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+}

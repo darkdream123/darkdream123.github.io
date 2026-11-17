@@ -4,7 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Orbit is a privacy-first workspace for discovering and preparing job applications.">
+    <meta name="theme-color" content="#242126">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Orbit">
     <title>Orbit — Your job search, in control</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/orbit.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/orbit.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -47,6 +55,7 @@
           <div class="breadcrumb"><span>Workspace</span><strong>/</strong><b>Overview</b></div>
           <div class="top-actions">
             <button class="icon-button" aria-label="Notifications">♢<i></i></button>
+            <button class="install-button" id="install-button" hidden>Install app</button>
             <button class="help-button">? <span>Help center</span></button>
           </div>
         </header>
@@ -161,7 +170,7 @@
               </article>
             </div>
           </section>
-          <footer><span>Orbit · Your search, in your hands.</span><span><a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Status</a></span></footer>
+          <footer><span>Orbit · Your search, in your hands.</span><span><button class="footer-install" id="footer-install">Install Orbit</button><a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Status</a></span></footer>
         </section>
       </main>
     </div>
